@@ -1,21 +1,17 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
-import configparser
+import ConfigParser
 from hermes_python.hermes import Hermes
 from hermes_python.ontology import *
 import io
-import random
-import os
 
 CONFIGURATION_ENCODING_FORMAT = "utf-8"
 CONFIG_INI = "config.ini"
 
-
-class SnipsConfigParser(configparser.SafeConfigParser):
+class SnipsConfigParser(ConfigParser.SafeConfigParser):
     def to_dict(self):
-        return {section: {option_name: option for option_name, option in self.items(section)} for section in
-                self.sections()}
+        return {section : {option_name : option for option_name, option in self.items(section)} for section in self.sections()}
 
 
 def read_configuration_file(configuration_file):
@@ -24,13 +20,12 @@ def read_configuration_file(configuration_file):
             conf_parser = SnipsConfigParser()
             conf_parser.readfp(f)
             return conf_parser.to_dict()
-    except (IOError, configparser.Error) as e:
+    except (IOError, ConfigParser.Error) as e:
         return dict()
 
-
-def subscribe_intent_callback(hermes, intent_message):
+def subscribe_intent_callback(hermes, intentMessage):
     conf = read_configuration_file(CONFIG_INI)
-    action_wrapper(hermes, intent_message, conf)
+    action_wrapper(hermes, intentMessage, conf)
 
 
 
