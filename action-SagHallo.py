@@ -6,14 +6,10 @@ from hermes_python.hermes import Hermes
 from hermes_python.ontology import *
 import io
 
-CONFIGURATION_ENCODING_FORMAT = "utf-8"
-CONFIG_INI = "config.ini"
-
 
 def subscribe_intent_callback(hermes, intentMessage):
     conf = None
     action_wrapper(hermes, intentMessage, conf)
-
 
 
 def action_wrapper(hermes, intent_message, conf):
