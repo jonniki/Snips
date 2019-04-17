@@ -16,7 +16,7 @@ def action_wrapper(hermes, intentMessage, conf):
     current_session_id = intentMessage.session_id
     hermes.publish_end_session(current_session_id, result_sentence)
     
-def intent_callback_Tschuess(hermes, intentMessage, conf):
+def intent_callback_Tschuess(hermes, intentMessage):
     result_sentence = "Auf Wiedersehen, mein Sir. Ich stehe zu Deine Dienste."
     current_session_id = intentMessage.session_id
     hermes.publish_end_session(current_session_id, result_sentence)    
