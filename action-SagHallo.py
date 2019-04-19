@@ -20,6 +20,7 @@ def action_wrapper(hermes, intentMessage, conf):
     wav = bytearray(binaryFile.read())
     result_sentence = "Herzlich Willkommen nach Hause Sir. Ich stehe zu Deinen Dienste."
     current_session_id = intentMessage.session_id
+    publish.single("hermes/audioServer/{}/playBytes/whateverId".format(SITE),payload=wav, hostname="localhost", client_id="")
     #hermes.publish_end_session(current_session_id, result_sentence)
     
 def intent_callback_Tschuess(hermes, intentMessage):
