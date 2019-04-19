@@ -1,10 +1,12 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
+import paho.mqtt.publish as publish
 from hermes_python.hermes import Hermes
 from hermes_python.ontology import *
 import io
 
+SITE = "default"
 
 def subscribe_intent_callback(hermes, intentMessage):
     conf = None
@@ -12,9 +14,13 @@ def subscribe_intent_callback(hermes, intentMessage):
 
 
 def action_wrapper(hermes, intentMessage, conf):
+    SITE = "default"
+    SOUNDFILE = "./Herzlich_willkommen.wav"
+    binaryFile = open(SOUNDFILE, mode='rb')
+    wav = bytearray(binaryFile.read())
     result_sentence = "Herzlich Willkommen nach Hause Sir. Ich stehe zu Deinen Dienste."
     current_session_id = intentMessage.session_id
-    hermes.publish_end_session(current_session_id, result_sentence)
+    #hermes.publish_end_session(current_session_id, result_sentence)
     
 def intent_callback_Tschuess(hermes, intentMessage):
     result_sentence = "Auf Wiedersehen Sir. Ich stehe zu Deine Dienste."
