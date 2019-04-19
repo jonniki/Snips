@@ -12,12 +12,12 @@ def subscribe_intent_callback(hermes, intentMessage):
 
 
 def action_wrapper(hermes, intentMessage, conf):
-    result_sentence = "Herzlich Willkommen nach Hause, mein Herr Eugen. Ich stehe zu Deinen Dienste."
+    result_sentence = "Herzlich Willkommen nach Hause Sir. Ich stehe zu Deinen Dienste."
     current_session_id = intentMessage.session_id
     hermes.publish_end_session(current_session_id, result_sentence)
     
 def intent_callback_Tschuess(hermes, intentMessage):
-    result_sentence = "Auf Wiedersehen, mein Ser. Ich stehe zu Deine Dienste, bljat."
+    result_sentence = "Auf Wiedersehen Sir. Ich stehe zu Deine Dienste."
     current_session_id = intentMessage.session_id
     hermes.publish_end_session(current_session_id, result_sentence)    
 
